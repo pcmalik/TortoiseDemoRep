@@ -1,0 +1,19 @@
+services:
+  coreappwithdocker:
+    build:
+      context: C:\temp\Discard\CoreAppWithDocker
+      dockerfile: CoreAppWithDocker/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_HTTPS_PORT: '44365'
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    image: coreappwithdocker
+    ports:
+    - published: 62612
+      target: 80
+    - published: 44365
+      target: 443
+    volumes:
+    - C:\Users\pmalik\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\pmalik\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+version: '3.4'
